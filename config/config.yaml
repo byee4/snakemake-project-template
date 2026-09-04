@@ -1,0 +1,5 @@
+# Edit this file to configure a particular run. Keep paths relative to the
+# project root so the workflow works locally and under a profile.
+project_name: "Snakemake Project Template"
+example_input: "resources/example.txt"
+report: "results/report.txt"

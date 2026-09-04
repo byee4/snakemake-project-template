@@ -1,0 +1,6 @@
+# Activate with: uv run snakemake --profile profiles/default
+# Keep site-specific executor, queue, account, and storage settings in a
+# separate ignored profile or configuration repository.
+cores: 1
+printshellcmds: true
+rerun-incomplete: true

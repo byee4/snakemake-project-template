@@ -1,0 +1,24 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Snakemake runtime state, logs, and generated outputs
+.snakemake/
+logs/
+results/*
+!results/.gitkeep
+
+# Editors / operating systems
+.DS_Store
+.idea/
+.vscode/
+*.swp
