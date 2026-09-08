@@ -22,3 +22,5 @@ results/*
 .idea/
 .vscode/
 *.swp
+
+/.codebase-memory/
