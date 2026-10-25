@@ -60,7 +60,7 @@ These outputs are recorded in the regression report but not compared. Each line 
 1. Run `make test` and read the failing assertion, locally or in the GitHub Actions log.
 2. For each byte-exact failure, run the workflow locally on the same fixture and diff the two outputs with `cmp`.
 3. For numeric failures, inspect the offending field and decide whether the tolerance band needs to be widened (justified) or the workflow needs to be fixed.
-4. **Never** regenerate `expected/` to make a failing test pass without re-firing the Review gate. That is "regression test laundering" and is a documented failure mode in the [Notebook to Snakemake Workflow tutorial](https://github.com/YeoLab/ai-kb/blob/main/Tutorials/Research_Accelerators/Notebook_to_Snakemake_Workflow_Beginner.md#common-failure-modes).
+4. **Never** regenerate `expected/` to make a failing test pass without re-firing the Review gate. That is "regression test laundering": the test then compares the new output with itself and can no longer catch a changed result.
 
 ## Sign-off
 
