@@ -1,0 +1,32 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.2
+    hooks:
+      - id: ruff-check
+  - repo: https://github.com/snakemake/snakefmt
+    rev: v2.1.0
+    hooks:
+      - id: snakefmt
+  - repo: local
+    hooks:
+      - id: snakemake-lint
+        name: snakemake --lint
+        entry: uv run snakemake --lint --configfile config/test.yaml
+        language: system
+        pass_filenames: false
+        files: ^(workflow/|config/|profiles/)
+      - id: no-runtime-installs
+        name: no pip/conda/mamba install in workflow files
+        language: pygrep
+        entry: '\b(pip|conda|mamba) install\b'
+        files: ^workflow/
+      - id: no-latest-containers
+        name: no container tags named latest
+        language: pygrep
+        entry: ':latest\b'
+        files: ^workflow/
+      - id: no-cluster-paths
+        name: no cluster paths outside config
+        language: pygrep
+        entry: '/(scratch|oasis|tscc)\b'
+        files: ^workflow/

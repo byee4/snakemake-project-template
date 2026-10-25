@@ -4,3 +4,6 @@
 cores: 1
 printshellcmds: true
 rerun-incomplete: true
+# Build each rule's `conda:` environment; without this, Snakemake ignores it.
+software-deployment-method:
+  - conda

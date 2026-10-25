@@ -2,6 +2,12 @@
 .env
 .env.*
 !.env.example
+*.pem
+*.key
+
+# Real data stays outside Git
+data/raw/
+data/restricted/
 
 # Python / uv
 .venv/

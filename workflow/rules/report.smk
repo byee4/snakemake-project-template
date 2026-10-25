@@ -3,21 +3,15 @@
 
 rule render_report:
     input:
-        config["example_input"]
+        config["example_input"],
     output:
-        config["report"]
+        config["report"],
     log:
-        "logs/render_report.log"
-    params:
-        project_name=config["project_name"]
+        "logs/render_report.log",
     conda:
         "../envs/base.yaml"
+    params:
+        project_name=config["project_name"],
     shell:
-        r"""
-        mkdir -p "$(dirname {output:q})"
-        {{
-          printf 'Project: %s\\n' {params.project_name:q}
-          printf '\\nInput:\\n'
-          cat {input:q}
-        }} > {output:q} 2> {log:q}
-        """
+        "(printf 'Project: %s\\n\\nInput:\\n' {params.project_name:q}; cat {input:q})"
+        " > {output:q} 2> {log:q}"
