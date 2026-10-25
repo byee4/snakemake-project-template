@@ -5,3 +5,7 @@ Notable changes to this project, newest first. The format follows
 Added, Changed, Fixed, Removed and Security.
 
 ## [Unreleased]
+
+### Fixed
+
+- `docs/planning/` no longer links to two ai-kb tutorials that were archived; `SPEC.md` points to its own rules for the AI, and `REGRESSION_CONTRACT.md` explains regression test laundering in place.

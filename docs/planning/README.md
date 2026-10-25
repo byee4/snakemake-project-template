@@ -13,6 +13,3 @@ notebook.
 | [REGRESSION_CONTRACT.md](REGRESSION_CONTRACT.md) | Outputs to compare with the notebook, and justified tolerances |
 | [tools.md](tools.md) | Tool versions and parameter sources |
 | [DEPLOY.md](DEPLOY.md) | Run environment, cost and recovery plan for a real run |
-
-Yeo Lab members: [Prepare a notebook workflow project](https://github.com/YeoLab/ai-kb/blob/main/Tutorials/Research_Accelerators/Prepare_a_Notebook_Workflow_Project.md)
-walks through filling them with a worked example.

@@ -10,8 +10,7 @@
 
   HOW TO FILL IT IN
     1. Have your AI coding partner read the notebook and produce a
-       first draft by following:
-       https://github.com/YeoLab/ai-kb/blob/main/Tutorials/Research_Accelerators/Prepare_a_Notebook_Workflow_Project.md
+       first draft, following the RULES FOR THE AI below.
     2. Read every section yourself against the original notebook.
     3. Where the AI wrote [NEEDS_INFO: ...], answer the question.
     4. Where the AI guessed a number, correct it from the notebook.
