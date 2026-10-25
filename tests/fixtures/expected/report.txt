@@ -1,0 +1,4 @@
+Project: Test fixture
+
+Input:
+This tiny public fixture is the input for the regression test.

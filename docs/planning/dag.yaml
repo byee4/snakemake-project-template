@@ -1,0 +1,66 @@
+# dag.yaml — <Project Name>
+#
+# PURPOSE
+#   This file expresses the source notebook as a directed acyclic graph
+#   (DAG): a list of nodes (scientific steps) plus the edges between
+#   them. Snakemake uses this shape in Phase 3 to wire up rules and
+#   wildcards.
+#
+# WHO FILLS IT IN
+#   The AI coding partner produces the first draft from the notebook.
+#   The project lead reviews it against the original at the Plan gate.
+#
+# REQUIREMENTS
+#   - Every cell in SPEC.md "In scope" must map to at least one node.
+#   - Every node has explicit inputs and outputs.
+#   - Mark which axis fans out (per sample / per replicate / per chromosome)
+#     and which nodes are fan-in points where parallel runs merge.
+#
+# EXAMPLE BELOW
+#   The example below is a paired-end bulk RNA-seq pipeline. Replace it
+#   with the nodes that actually appear in your notebook.
+
+nodes:
+  - id: trim
+    op: <tool_name>           # e.g. fastp_paired
+    inputs:
+      - <input_a>             # e.g. fastq_r1
+      - <input_b>             # e.g. fastq_r2
+    outputs:
+      - <output_a>            # e.g. trimmed_r1
+      - <output_b>            # e.g. trimmed_r2
+      - <output_c>            # e.g. fastp_json
+
+  - id: <next_node>
+    op: <tool_name>
+    inputs: [<...>]
+    outputs: [<...>]
+
+  # ...add one node per scientific step...
+
+  - id: aggregate
+    op: <aggregator_tool>     # e.g. multiqc
+    inputs:                   # the fan-in step: collects across samples
+      - <per_sample_artifact_a>
+      - <per_sample_artifact_b>
+    outputs:
+      - <report>              # e.g. multiqc_html
+
+edges:
+  # list every directed dependency
+  - [trim, <next_node>]
+  - [<next_node>, aggregate]
+
+# Which axis the pipeline parallelizes across.
+# Common: sample, replicate, chromosome, condition.
+fan_out_axis: sample
+
+# Which nodes collapse the parallel runs back into a single artifact.
+fan_in_nodes:
+  - aggregate
+
+# Notes for the reviewer.
+notes: |
+  TODO: explain anything non-obvious — e.g. why a step appears twice,
+  why a particular axis fans out, or where the notebook had hidden
+  cell-order coupling that you flattened into explicit dependencies.

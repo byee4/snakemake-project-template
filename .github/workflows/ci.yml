@@ -8,14 +8,21 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        # A login shell puts conda on PATH for Snakemake's per-rule environments.
+        shell: bash -el {0}
     steps:
       - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
       - uses: astral-sh/setup-uv@v6
       - name: Install workflow environment
         run: uv sync
-      - name: Snakemake lint
-        run: uv run snakemake --lint --configfile config/config.yaml
-      - name: Run example workflow
-        run: uv run snakemake --cores 1 --configfile config/config.yaml --rerun-incomplete
-      - name: Verify output
-        run: test -s results/report.txt
+      - name: Lint
+        run: make lint
+      - name: Dry run
+        run: make dry-run
+      - name: Test
+        run: make test

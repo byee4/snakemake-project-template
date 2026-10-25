@@ -1,0 +1,5 @@
+# Test configuration: a tiny public fixture with a frozen expected output.
+# `make dry-run` and `make test` use this file, so tests never read real data.
+project_name: "Test fixture"
+example_input: "tests/fixtures/input.txt"
+report: "results/test/report.txt"

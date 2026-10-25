@@ -1,10 +1,12 @@
 """Entry point for the Snakemake workflow."""
 
+
 configfile: "config/config.yaml"
+
 
 include: "rules/report.smk"
 
 
 rule all:
     input:
-        config["report"]
+        config["report"],
